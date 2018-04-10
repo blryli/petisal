@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/theme-chalk/index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/Swiper/4.2.2/css/swiper.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/header-footer.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="icon-font/iconfont.css">
+    <title>petisal</title>
+</head>
+
+<body>
+    <div id="app">
+        <header class="header" :style="{backgroundColor: bgColor}">
+            <div class="sp-container">
+                <div class="el-row">
+                    <div class="icon el-col el-col-6">
+                        <i id="openNav" class="sp-menu-icon"></i>
+                    </div>
+                    <div class="logo el-col el-col-6">
+                        <a href="index.html">
+                            <img src="img/logo.png" alt="logo">
+                        </a>
+                    </div>
+                    <nav class="el-col el-col-13 f-r">
+                        <ul id="nav" class="nav el-row">
+                            <li>
+                                <a href="about.html">ABOUT US</a>
+                            </li>
+                            <li>
+                                <a href="doctor.html">PRODUCTS</a>
+                            </li>
+                            <li>
+                                <a href="index.html" class="active">HOME</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="banner">
+            <div id="banner-swiper" class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="xs-hide" src="./img/banner1.jpg">
+                        <img class="xs-show" src="./img/banner1-small.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="xs-hide" src="./img/banner2.jpg">
+                        <img class="xs-show" src="./img/banner2-small.jpg">
+                    </div>
+                </div>
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev xs-hide"></div>
+                <div class="swiper-button-next xs-hide"></div>
+            </div>
+        </div>
+        <main class="main">
+            <div class="sp-container">
+                <div class="el-row" style="margin: 0 -10px;">
+                    <div v-for="(d, i) in productList" :key="i" class="el-col el-col-xs-24 el-col-sm-12 card" style="padding: 0 10px;" :class="{'el-col-md-8': i > 1}">
+                        <div class="el-card b-p-r-c" :style="{backgroundImage: d.src}">
+                            <div class="el-card__body" @click="handleLook(d.id)">
+                                <span class="line xs-hide" v-if="i < 2"></span>
+                                <div class="title" v-text="d.title"></div>
+                                <div class="price m-t-38" v-text="'$ ' + d.price"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="el-row bg-fff m-t-60">
+                <div class="sp-container">
+                    <h1 class="h1 t-a-c">PRODUCTS ADVANTAGE</h1>
+                    <div class="el-row">
+                        <div class="el-col el-col-xs-24 el-col-sm-12 t-a-c m-b-80">
+                            <div class="t-layou">
+                                <img src="./img/ic_material.png">
+                                <div class="title">ENVARONMENTA PROTECTION MATERIALS</div>
+                                <span>为了宠物们的健康与安全，我们坚持采用环保材料生产每一个产品</span>
+                            </div>
+                        </div>
+                        <div class="el-col el-col-xs-24 el-col-sm-12 t-a-c m-b-80">
+                            <div class="t-layou f-r">
+                                <img src="./img/ic_playability.png">
+                                <div class="title">HIGH PLAYABILITY</div>
+                                <span>基于对宠物行业的多年研究，我们更懂宠物，并设计出更具可玩性的产品</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <el-dialog :show-close="false" class="dialog" :visible.sync="dialogVisible" width="64%" top="16vh">
+            <div class="close" @click="dialogVisible = false"></div>
+            <el-row class="product">
+                <el-col :xs="24" :sm="16" class="product-img">
+                    <div ref="img" class="swiper-container">
+                        <img :src="product.src">
+                    </div>
+                </el-col>
+                <el-col :xs="24" :sm="8" class="content">
+                    <h2>{{product.title}}</h2>
+                    <p>
+                        <strong>产品规格</strong>
+                    </p>
+                    <p>重量：{{product.weight}}g</p>
+                    <p>直径：{{product.diameter}}cm</p>
+                    <p>材质：{{product.texture}}</p>
+                    <p>适合宠物：{{product.pet}}</p>
+                    <p>功能：{{product.thefunction}}</p>
+                    <h2 class="main-color m-t-20">Incredible Sale Price：$&nbsp;{{product.saleprice}}
+                        <small><s>Retail Price：$&nbsp;{{product.retailprice}}</s></small>
+                    </h2>
+                    <div class="btn-box">
+                        <el-button class="main-btn">BUY ATAMAZON US</el-button>
+                    </div>
+                </el-col>
+            </el-row>
+        </el-dialog>
+        <footer class="footer">
+            <div class="sp-container">
+                <div class="el-row">
+                    <div class="el-col el-col-xs-24 el-col-sm-12 t-a-l">
+                        <span>CONTACT US :</span>
+                        <ul class="el-row footer-left">
+                            <li>
+                                <a href="javascript:;"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="el-col el-col-xs-24 el-col-sm-12 t-a-r">
+                        <span>COPYRIGHT © 2018 PETISAL INC</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/4.2.2/js/swiper.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.3.2/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            dialogVisible: false,
+            bgColor: 'transparent',
+            isScrollTop: false,
+            productList: [],
+            product: {
+                src: '',
+                title: '',
+                weight: '',
+                diameter: '',
+                texture: '',
+                pet: '',
+                thefunction: '',
+                saleprice: '',
+                retailprice: '',
+            },
+            products: []
+        },
+        watch: {
+            dialogVisible(val) {
+                if (val) {
+                    this.bgColor = val ? '#7fbc40' : 'transparent';
+                    this.$nextTick(() => {
+                        this.$refs.img.scrollTop = 0;
+                    });
+                } else {
+                    this.bgColor = this.isScrollTop ? '#7fbc40' : 'transparent';
+                }
+            }
+        },
+        created() {
+            var self = this;
+            $.ajax({
+                url: 'http://blryli.cn/server/get-product-list.php',
+                type: 'post',
+                dataType: 'json',
+                timeout: 1000,
+                success: function (data, status) {
+                    self.productList = data
+                    console.log(data)
+                },
+                fail: function (err, status) {
+                    console.log(err)
+                }
+            })
+        },
+        computed: {
+            isMobile() {
+                return $(document).width() < 768 ? true : false
+            },
+            scrollTop() {
+                return this.isMobile ? 200 : 300;
+            }
+        },
+        methods: {
+            //监听滚动
+            handleScroll() {
+                var scrollTop = $(document).scrollTop();
+                this.bgColor = scrollTop > this.scrollTop ? '#7fbc40' : 'transparent';
+                this.isScrollTop = scrollTop > this.scrollTop ? true : false;
+            },
+            //查看详情
+            handleLook(id) {
+                var self = this;
+                if (self.isMobile) {
+                    location.href = 'product.html?id=' + id
+                } else {
+                    self.dialogVisible = true;
+                    $.ajax({
+                        url: 'http://blryli.com/server/get-product.php',
+                        type: 'post',
+                        data: {
+                            id: id
+                        },
+                        dataType: 'json',
+                        timeout: 1000,
+                        success: function (data, status) {
+                            self.product = data[0]
+                            console.log(data[0])
+                        },
+                        fail: function (err, status) {
+                            console.log(err)
+                        }
+                    })
+                }
+            }
+        },
+        mounted: function () {
+            this.$nextTick(function () {
+                var self = this;
+                window.addEventListener('scroll', this.handleScroll)
+
+                this.handleScroll();
+
+                //banner滑动
+                var mySwiper = new Swiper('#banner-swiper', {
+                    autoplay: true,//可选选项，自动滑动
+                    loop: true,
+                    // 如果需要前进后退按钮
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                })
+            })
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,64 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "src": "./img/caigongqiu.jpg",
+      "title": "铃铛彩虹球1",
+      "weight": "86g",
+      "diameter": "7.5cm",
+      "texture": "天然无毒橡胶",
+      "pet": "猫、狗、其他小宠",
+      "thefunction": "玩耍的同时，能够清洁宠物牙齿",
+      "saleprice": "$9.5",
+      "retailprice": "$19.5"
+    },
+    {
+      "id": 1,
+      "src": "./img/caigongqiu.jpg",
+      "title": "铃铛彩虹球2",
+      "weight": "86g",
+      "diameter": "7.5cm",
+      "texture": "天然无毒橡胶",
+      "pet": "猫、狗、其他小宠",
+      "thefunction": "玩耍的同时，能够清洁宠物牙齿",
+      "saleprice": "$9.5",
+      "retailprice": "$19.5"
+    },
+    {
+      "id": 2,
+      "src": "./img/caigongqiu.jpg",
+      "title": "铃铛彩虹球3",
+      "weight": "86g",
+      "diameter": "7.5cm",
+      "texture": "天然无毒橡胶",
+      "pet": "猫、狗、其他小宠",
+      "thefunction": "玩耍的同时，能够清洁宠物牙齿",
+      "saleprice": "$9.5",
+      "retailprice": "$19.5"
+    },
+    {
+      "id": 3,
+      "src": "./img/caigongqiu.jpg",
+      "title": "铃铛彩虹球4",
+      "weight": "86g",
+      "diameter": "7.5cm",
+      "texture": "天然无毒橡胶",
+      "pet": "猫、狗、其他小宠",
+      "thefunction": "玩耍的同时，能够清洁宠物牙齿",
+      "saleprice": "$9.5",
+      "retailprice": "$19.5"
+    },
+    {
+      "id": 4,
+      "src": "./img/caigongqiu.jpg",
+      "title": "铃铛彩虹球5",
+      "weight": "86g",
+      "diameter": "7.5cm",
+      "texture": "天然无毒橡胶",
+      "pet": "猫、狗、其他小宠",
+      "thefunction": "玩耍的同时，能够清洁宠物牙齿",
+      "saleprice": "$9.5",
+      "retailprice": "$19.5"
+    }
+  ]
+}

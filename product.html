@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="css/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/public.css">
+  <title>petisal</title>
+</head>
+
+<body>
+  <div class="el-dialog" style="width: 100%; margin: 0;">
+    <div class="el-dialog__body">
+      <div class="close"></div>
+      <div class="product el-row">
+        <div class="product-img el-col el-col-24 el-col-xs-24 el-col-sm-16">
+          <div class="swiper-container">
+            <img id="src">
+          </div>
+        </div>
+        <div class="content el-col el-col-24 el-col-xs-24 el-col-sm-8">
+          <h2 id="title">铃铛彩虹球</h2>
+          <p>
+            <strong>产品规格</strong>
+          </p>
+          <p>重量：
+            <span id="weight"></span>
+          </p>
+          <p>直径：
+            <span id="diameter"></span>
+          </p>
+          <p>材质：
+            <span id="texture"></span>
+          </p>
+          <p>适合宠物：
+            <span id="pet"></span>
+          </p>
+          <p>功能：
+            <span id="thefunction"></span>
+          </p>
+          <h2 class="main-color m-t-20">Incredible Sale Price：
+            <span id="saleprice"></span>
+            <small>Retail Price：
+              <span id="retailprice"></span>
+            </small>
+          </h2>
+          <div class="btn-box">
+            <button type="button" class="el-button main-btn el-button--default">
+              <span>BUY ATAMAZON US</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+  $(function () {
+    $('.close').click(function () {
+      window.history.go(-1);
+    })
+    var id = getQueryString("id"),
+      product = {};
+    $.ajax({
+      url: 'http://blryli.cn/server/get-product.php',
+      type: 'post',
+      data: {id: id},
+      dataType: 'json',
+      success: function (data) {
+        product = data[0];
+        $('#src').attr('src', product.src);
+        $('#title').html(product.title);
+        $('#weight').html(product.weight);
+        $('#diameter').html(product.diameter);
+        $('#texture').html(product.texture);
+        $('#pet').html(product.pet);
+        $('#thefunction').html(product.thefunction);
+        $('#saleprice').html(product.saleprice);
+        $('#retailprice').html(product.retailprice);
+      },
+      fail: function (err, status) {
+        console.log(err)
+      }
+    })
+    function getQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      //window.location.search 用以获取请求的参数，即url中"?"后面的部分
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null)
+        return unescape(r[2]);
+      return "";
+    }
+  })
+</script>
+
+</html>
